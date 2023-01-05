@@ -1,6 +1,28 @@
 interpreter = {}
 interpreter.keywords={"and", "break" , "do" , "else" , "elseif" , "end" , "false" , "for"  , "if" , "in" , "local" , "nil" , "not" , "or" , "repeat" , "return" , "then" , "true" , "until" , "while"}
 
+Cmath = {}
+Cmath['add']=function(...)
+	local a={...}
+	local last=a[1] or 0
+	if #a<2 then return last end
+	for i=2,#a do
+		local res = math_add(last,a[i])
+		last=res
+	end
+	return last;
+end
+Cmath['sub']=function(...)
+	local a={...}
+	local last=a[1] or 0
+	if #a<2 then return last end
+	for i=2,#a do
+		local res = math_subtract(last,a[i])
+		last=res
+	end
+	return last;
+end
+setfenv(Cmath, _G)
 
 function interpreter.parse(code)
 	local tokens = {}
