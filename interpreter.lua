@@ -1,28 +1,42 @@
 interpreter = {}
-interpreter.keywords={"and", "break" , "do" , "else" , "elseif" , "end" , "false" , "for"  , "if" , "in" , "local" , "nil" , "not" , "or" , "repeat" , "return" , "then" , "true" , "until" , "while"}
+interpreter.keywords={"and", "break" , "do" , "else" , "elseif" , "end" , "false" , "for"  , "if" , "in" , "local" , "nil" , "not" , "or" , "repeat" , "return" , "then" , "true" , "until" , "while","function","goto","nil","return"}
 
 Cmath = {}
-Cmath['add']=function(...)
-	local a={...}
-	local last=a[1] or 0
-	if #a<2 then return last end
-	for i=2,#a do
-		local res = math_add(last,a[i])
-		last=res
-	end
-	return last;
+Cmath['cos'] = function(n0)
+  return compute_cos(n0 or 0)
 end
-Cmath['sub']=function(...)
-	local a={...}
-	local last=a[1] or 0
-	if #a<2 then return last end
-	for i=2,#a do
-		local res = math_subtract(last,a[i])
-		last=res
-	end
-	return last;
+Cmath['sin'] = function(n0)
+  return compute_sin(n0 or 0)
+end
+Cmath['tan'] = function(n0)
+  return compute_tan(n0 or 0)
+end
+Cmath['abs'] = function(n0)
+  return compute_abs(n0 or 0)
+end
+Cmath['sqrt'] = function(n0)
+  return compute_sqrt(n0 or 0)
+end
+Cmath['exp'] = function(n0)
+  return compute_exp(n0 or 0)
+end
+Cmath['log'] = function(n0)
+  return compute_log(n0 or 0)
+end
+Cmath['log10'] = function(n0)
+  return compute_log10(n0 or 0)
+end
+Cmath['pow'] = function(base, exponent)
+  return compute_pow(base or 0, exponent or 0)
+end
+Cmath['deg'] = function(n0)
+  return compute_deg(n0 or 0)
+end
+Cmath['rad'] = function(n0)
+  return compute_rad(n0 or 0)
 end
 setfenv(Cmath, _G)
+
 
 function interpreter.parse(code)
 	local tokens = {}
