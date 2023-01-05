@@ -20,8 +20,6 @@ int run_cpp_code(lua_State* L) {
   return 0;
 }
 
-int math_add() 
-
 int main() {
   lua_State* L = luaL_newstate();
   
@@ -37,4 +35,3 @@ int main() {
   lua_close(L);
   return 0;
 }
-
